@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <View
+        android:layout_width="10dp"
+        android:layout_height="200dp"></View>
+<com.popomusic.ui.bannerViewPager.BannerViewPager
+    android:layout_width="390dp"
+    android:layout_height="200dp"
+    >
+</com.popomusic.ui.bannerViewPager.BannerViewPager>
+<View
+    android:layout_width="10dp"
+    android:layout_height="200dp"></View>
+    </LinearLayout>
+
+<View
+    android:layout_width="match_parent"
+    android:layout_height="10dp"></View>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+   <RelativeLayout
+       android:id="@+id/RL_classify"
+       android:layout_width="0dp"
+       android:layout_height="wrap_content"
+       android:layout_weight="1"
+       >
+       <ImageView
+           android:id="@+id/classify"
+           android:layout_width="40dp"
+           android:layout_height="40dp"
+           android:layout_centerHorizontal="true"
+           android:scaleType="fitXY"
+           android:src="@mipmap/main_classify"
+           />
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="3dp"
+           android:layout_below="@id/classify"
+           android:text="音乐分类"
+       />
+   </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/RL_love"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+        <ImageView
+            android:id="@+id/love"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/main_love"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/love"
+            android:text="我的收藏"
+            />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/RL_down"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+        <ImageView
+            android:id="@+id/down"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/main_down"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/down"
+            android:text="音乐下载"
+            />
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/RL_native"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        >
+        <ImageView
+            android:id="@+id/nativemusic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/main_native"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="3dp"
+            android:layout_below="@id/nativemusic"
+            android:text="本地音乐"
+            />
+
+    </RelativeLayout>
+</LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="150dp"
+                app:cardCornerRadius="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="QQ音乐热门榜单"
+                    android:layout_gravity="center"
+                    android:textSize="30dp"/>
+            </android.support.v7.widget.CardView>
+
+
+        </RelativeLayout>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="15dp">
+
+</View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="3dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@color/user_name" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="热门歌单"/></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+<RelativeLayout
+                android:id="@+id/RL_minyao"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1">
+<android.support.v7.widget.CardView
+    android:id="@+id/minyao"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_centerHorizontal="true"
+    android:scaleType="fitXY"
+    app:cardCornerRadius="10dp"
+    >
+
+
+</android.support.v7.widget.CardView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="3dp"
+        android:layout_below="@+id/minyao"
+        android:text="经典民谣"/>
+</RelativeLayout>
+
+                    <RelativeLayout
+                    android:id="@+id/RL_korea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/korea"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitXY"
+                        app:cardCornerRadius="10dp"
+                        >
+
+                    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="3dp"
+                        android:layout_below="@+id/korea"
+                        android:text="韩国新曲"/>
+                    </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/RL_English"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/English"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="fitXY"
+                        app:cardCornerRadius="10dp"
+                        >
+
+                    </android.support.v7.widget.CardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="3dp"
+                        android:layout_below="@+id/English"
+                        android:text="欧美风格"/>
+
+</RelativeLayout>
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/RL_JP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/JP"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitXY"
+                    app:cardCornerRadius="10dp"
+                    >
+
+
+                </android.support.v7.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_below="@+id/JP"
+                    android:text="日系和风"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/RL_yaogun"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/yaogun"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitXY"
+                    app:cardCornerRadius="10dp"
+                    >
+
+                </android.support.v7.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_below="@+id/yaogun"
+                    android:text="劲爆摇滚"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/RL_HK"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/HK"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="fitXY"
+                    app:cardCornerRadius="10dp"
+                    >
+
+                </android.support.v7.widget.CardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_below="@+id/HK"
+                    android:text="港台金曲"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</ScrollView>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        icon="@mipmap/main_musics"
+        id="@+id/tab1"
+        title="音乐"
+        barColorWhenSelected="#99FFFF"
+        />
+    <tab
+        icon="@mipmap/main_tv"
+        id="@+id/tab2"
+        title="视频"
+        barColorWhenSelected="#FFCC00"/>
+    <tab
+        icon="@mipmap/main_community"
+        id="@+id/tab3"
+        title="社区"
+        barColorWhenSelected="#0099FF"/>
+
+    <tab
+        icon="@mipmap/main_home"
+        id="@+id/tab3"
+        title="Me"
+        barColorWhenSelected="#FF3399"
+   />
+</tabs>

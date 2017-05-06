@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#01ffc1</color>
+    <color name="colorPrimaryDark">#01ffc1</color>
+    <color name="colorAccent">#01ffc1</color>
+
+    <color name="user_name">#FF9966</color>
+    <color name="singer">#b2b2b2</color>
+    <color name="line">#e2e2e2</color>
+    <color name="notification_bak">#47fafafa</color>
+    <color name="playing_activity_song_bac">#80000000</color>
+    <color name="color_bg_black">#353333</color>
+    <color name="windowBackground">#f4f2f2</color>
+    <color name="gallery_blue">#01ffc1</color>
+    <color name="colorLightBar">#FFFFFF</color>
+    <color name="colorLightStatus">#9E9E9E</color>
+    <color name="devide_line">#CBCED2</color>
+</resources>

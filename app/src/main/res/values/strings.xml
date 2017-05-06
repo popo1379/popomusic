@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">POPOMusic</string>
+    <string name="search_bar_hint">搜索你的最爱</string>
+
+    <string name="tasks_manager_demo_title">Tasks Manager Demo</string>
+    <string name="tasks_manager_demo_name" formatted="false">task: %d</string>
+    <string name="tasks_manager_demo_status_loading">Status: loading...</string>
+    <string name="tasks_manager_demo_status_pending">Status: pending</string>
+    <string name="tasks_manager_demo_status_started">Status: started</string>
+    <string name="tasks_manager_demo_status_connected">Status: connected</string>
+    <string name="tasks_manager_demo_status_progress">Status: progressing</string>
+    <string name="tasks_manager_demo_status_downloading" formatted="false">Status: downloading %d</string>
+    <string name="tasks_manager_demo_status_error">Status: error</string>
+    <string name="tasks_manager_demo_status_paused">Status: paused</string>
+    <string name="tasks_manager_demo_status_completed">Status: completed</string>
+    <string name="tasks_manager_demo_status_not_downloaded">Status: has not downloaded</string>
+
+</resources>
