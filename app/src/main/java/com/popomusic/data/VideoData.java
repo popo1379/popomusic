@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
- * Created by Administrator on 2017/5/20 0020.
+ * Created by popo on 2017/5/20 0020.
  */
 public interface VideoData {
     interface View extends BaseView {

@@ -7,7 +7,7 @@ import com.popomusic.view.BaseView;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/4/6 0006.
+ * Created by popo on 2017/4/6 0006.
  */
 public interface LocalMusicData {
     interface View extends BaseView{
