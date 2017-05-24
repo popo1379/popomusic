@@ -15,7 +15,7 @@ import com.popomusic.util.UIcollector;
 import butterknife.ButterKnife;
 
 /**
- * Created by Administrator on 2017/4/6 0006.
+ * Created by popo on 2017/4/6 0006.
  */
 public abstract class BaseFragment extends Fragment {
 

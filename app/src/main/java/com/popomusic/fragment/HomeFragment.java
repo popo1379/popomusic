@@ -12,7 +12,7 @@ import org.androidannotations.internal.core.handler.BeanHandler;
 import butterknife.BindView;
 
 /**
- * Created by Administrator on 2017/5/17 0017.
+ * Created by popo on 2017/5/17 0017.
  */
 public class HomeFragment extends BaseFragment {
     @BindView(R.id.webview)

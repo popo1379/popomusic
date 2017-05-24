@@ -30,7 +30,7 @@ package com.popomusic.fragment;
         import butterknife.OnClick;
 
 /**
- * Created by Administrator on 2017/4/6 0006.
+ * Created by popo on 2017/4/6 0006.
  */
 public class MusicFragment extends BaseFragment {
     @BindView(R.id.Banner)

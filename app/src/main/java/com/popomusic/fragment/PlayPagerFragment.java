@@ -16,7 +16,7 @@ import com.popomusic.util.UIcollector;
 import butterknife.BindView;
 
 /**
- * Created by Administrator on 2017/4/13 0013.
+ * Created by popo on 2017/4/13 0013.
  */
 public class PlayPagerFragment extends BaseFragment {
 
