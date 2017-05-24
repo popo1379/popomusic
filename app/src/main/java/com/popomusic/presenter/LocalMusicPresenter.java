@@ -10,15 +10,17 @@ import com.popomusic.bean.Constant;
 import com.popomusic.bean.MusicBean;
 import com.popomusic.data.LocalMusicData;
 import com.popomusic.util.LogUtils;
+import com.popomusic.videoModel.SectionList;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Function;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Func1;
-import rx.schedulers.Schedulers;
 
 
 /**
@@ -36,12 +38,12 @@ public class LocalMusicPresenter implements LocalMusicData.Presenter {
 
     @Override
     public void requestData() {
-        mCursor = ((LocalMusicActivity)mView).getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
-        if (  null != mCursor) {
+        mCursor = ((LocalMusicActivity) mView).getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, null, null, null, MediaStore.Audio.Media.DEFAULT_SORT_ORDER);
+        if (null != mCursor) {
             list.clear();
-            Observable.just(mCursor).flatMap(new Func1<Cursor, Observable<?>>() {
+            Observable.just(mCursor).flatMap(new Function<Cursor, ObservableSource<List<MusicBean>>>() {
                 @Override
-                public Observable<List<MusicBean>> call(Cursor cursor) {
+                public ObservableSource<List<MusicBean>> apply(@NonNull Cursor cursor) throws Exception {
                     for (int i = 0; i < mCursor.getCount(); i++) {
                         MusicBean bean = new MusicBean();
                         mCursor.moveToNext();
@@ -55,26 +57,17 @@ public class LocalMusicPresenter implements LocalMusicData.Presenter {
                     }
                     return Observable.just(list);
                 }
-            }).subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Subscriber<Object>() {
-                        @Override
-                        public void onCompleted() {
-                            Toast.makeText(MyApplication.mContext,"扫描到"+ mCursor.getCount()+"首本地歌曲",Toast.LENGTH_SHORT).show();
-                        }
-
-                        @Override
-                        public void onError(Throwable e) {
-                            LogUtils.e(TAG,e.getMessage());
-                        }
-
-                        @Override
-                        public void onNext(Object o) {
-                            mView.setData((List<MusicBean>)o);
-                        }
-                    });
+            }).subscribeOn(io.reactivex.schedulers.Schedulers.io())
+                    .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
+                    .subscribe(list -> parseData(list));
 
         }
     }
-
+    private void parseData(List<MusicBean> list){
+        mView.setData(list);
+    }
 }
+
+
+
+

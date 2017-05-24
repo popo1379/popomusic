@@ -17,7 +17,6 @@ import java.util.List;
 /**
  * Created by dingmouren on 2017/2/10.
  */
-
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
     private static final String TAG = SearchAdapter.class.getName();
     private Context mContext;

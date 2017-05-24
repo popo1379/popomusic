@@ -9,7 +9,8 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -32,9 +33,10 @@ public class ApiManager {
                 .addInterceptor(loggingInterceptor)
                 .build();
         Retrofit retrofit1 = new Retrofit.Builder()
+
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(Constant.QQ_MUSIC_BASE_URL)
                 .build();
         mQQMusicApiService = retrofit1.create(QQMusicApi.class);

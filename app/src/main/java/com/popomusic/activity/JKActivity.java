@@ -44,7 +44,8 @@ import butterknife.BindView;
 /**
  * Created by popo on 2017/4/10 0010.
  */
-public class JKActivity extends BaseActivity implements JKMusicData.View {
+public class JKActivity extends BaseActivity implements JKMusicData.View,SwipeRefreshLayout.OnRefreshListener{
+
     private static final String TAG = JKActivity.class.getName();
     private RecyclerView recyclerView;
     private JKPresenter mPresenter;
@@ -53,7 +54,7 @@ public class JKActivity extends BaseActivity implements JKMusicData.View {
     Messenger mMessengerClient;
     private MyHandler myHandler;
     private LinearLayoutManager mLayoutManager;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    private SwipeRefreshLayout srfLayout;
     private List<MusicBean> mList;
     public int currentTime;//实时当前进度
     public int duration;//歌曲的总进度
@@ -85,7 +86,7 @@ public class JKActivity extends BaseActivity implements JKMusicData.View {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(mAdapter);
         LogUtils.d("LocalMusicActivity","initView()");
-        swipeRefreshLayout=(SwipeRefreshLayout)findViewById(R.id.swipe);
+        srfLayout=(SwipeRefreshLayout)findViewById(R.id.swipe);
         mPresenter=new JKPresenter((JKMusicData.View)this);
         mBtnPlay.setImageResource(R.mipmap.bar_play);
     }
@@ -95,14 +96,10 @@ public class JKActivity extends BaseActivity implements JKMusicData.View {
         if (null != mList) {
             mAdapter.setList(mList);
             mAdapter.notifyDataSetChanged();
-        }else {
-                swipeRefreshLayout.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshLayout.setRefreshing(true);
-                    }
-                });
+            LogUtils.d("LocalMusicActivity","从数据库提取数据");
+            srfLayout.setOnRefreshListener(this);
         }
+        srfLayout.post(() -> onRefresh());
     }
 
     @Override
@@ -110,64 +107,48 @@ public class JKActivity extends BaseActivity implements JKMusicData.View {
         Collections.shuffle(list);
         mAdapter.setList(list);
         mAdapter.notifyDataSetChanged();
-        overswipe();
+    }
+    @Override
+    public void onRefresh() {
+        mAdapter.removeAll();
+        mPresenter.requestData();
+    }
+    //刷新开关：开
+    @Override
+    public void showProgress() {
+        if (!srfLayout.isRefreshing()) {
+            srfLayout.setRefreshing(true);
+        }
+    }
+
+    //刷新开关：关
+    @Override
+    public void hideProgress() {
+        if (srfLayout.isRefreshing()) {
+            srfLayout.setRefreshing(false);
+        }
     }
 
     @Override
     public void initListener() {
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                mAdapter.removeAll();
-                mPresenter.requestData();
-            }
-        });
 
-        mAdapter.setOnItemClickListener(new LocalMusicAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClickListener(View view, int position) {
-                playSong(position);
-            }
-        });
+        mAdapter.setOnItemClickListener((view, position) -> playSong(position));
 
-        mBtnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (null != mServiceMessenger) {
-                    Message msgToServicePlay = Message.obtain();
-                    msgToServicePlay.arg1 = 0x40001;//表示这个暂停是由点击按钮造成的，
-                    msgToServicePlay.what = Constant.PLAYING_ACTIVITY_PLAY;
-                    try {
-                        mServiceMessenger.send(msgToServicePlay);
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
-                    }
+        mBtnPlay.setOnClickListener(view -> {
+            if (null != mServiceMessenger) {
+                Message msgToServicePlay = Message.obtain();
+                msgToServicePlay.arg1 = 0x40001;//表示这个暂停是由点击按钮造成的，
+                msgToServicePlay.what = Constant.PLAYING_ACTIVITY_PLAY;
+                try {
+                    mServiceMessenger.send(msgToServicePlay);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
                 }
             }
         });
-        relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(JKActivity.this,PlayMusicActivity.class));
-
-            }
-        });
+        relativeLayout.setOnClickListener(view -> startActivity(new Intent(JKActivity.this,PlayMusicActivity.class)));
 
     }
-
-    public void overswipe(){
-        if (swipeRefreshLayout.isRefreshing()){
-            LogUtils.d("JKActivity","刷新停止");
-            swipeRefreshLayout.post(new Runnable() {
-                @Override
-                public void run() {
-                    swipeRefreshLayout.setRefreshing(false);
-                }
-            });
-
-        }
-    }
-
 
 
     ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -223,7 +204,7 @@ public class JKActivity extends BaseActivity implements JKMusicData.View {
                     MusicBean musicBean = (MusicBean) bundle.getSerializable(Constant.MEDIA_PLAYER_SERVICE_MODEL_PLAYING);
                     activity.title.setText(musicBean.getSongname());
                     activity.artist.setText(musicBean.getSingername());
-                    Glide.with(activity).load(musicBean.getAlbumpic_big()).asGif().diskCacheStrategy(DiskCacheStrategy.NONE).into(activity.playcard);
+                    Glide.with(activity).load(musicBean.getAlbumpic_big()).into(activity.playcard);
                     break;
                 case Constant.MEDIA_PLAYER_SERVICE_IS_PLAYING:
                     LogUtils.d(TAG, "收到了来自service的信息：是否更新UI");
@@ -261,18 +242,5 @@ public class JKActivity extends BaseActivity implements JKMusicData.View {
 //        MyApplication.getRefWatcher().watch(this);
     }
 
-    static class MyRunnbale implements Runnable{
-        private WeakReference<JKActivity> weakActivity;
-        public MyRunnbale(JKActivity activity) {
-            weakActivity = new WeakReference<JKActivity>(activity);
-        }
 
-        @Override
-        public void run() {
-            JKActivity activity = weakActivity.get() ;
-            if (activity != null) {
-                activity.swipeRefreshLayout.setRefreshing(false);
-            }
-        }
-    }
 }

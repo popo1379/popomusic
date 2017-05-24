@@ -803,7 +803,7 @@ public class MediaPlayerService extends Service implements OnPreparedListener, O
 private void downMusicFile(String url){
 
     FileDownloader.getImpl().create(url)
-            .setPath(Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator+"popomusic",true)
+            .setPath(Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator.endsWith(".mp4"),true)
             .setListener(new FileDownloadListener() {
                 @Override
                 protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) {
@@ -849,8 +849,6 @@ private void downMusicFile(String url){
                 protected void warn(BaseDownloadTask task) {
                 }
             }).start();
-
-
 }
 
 

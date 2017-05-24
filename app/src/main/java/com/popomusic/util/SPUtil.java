@@ -12,7 +12,6 @@ import java.util.Map;
  * Created by dingmouren on 2016/12/29.
  * SharedPreferences 工具类
  */
-
 public class SPUtil {
     private static String getSpName(Context context){
         return context.getPackageName() + "_sp";

@@ -9,9 +9,10 @@ import com.popomusic.bean.SearchPage;
 
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
-import rx.Observable;
+
 
 /**
  * Created by dingmouren on 2017/2/3.

@@ -1,7 +1,6 @@
 package com.popomusic.presenter;
 
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.popomusic.MyApplication;
@@ -15,8 +14,9 @@ import com.popomusic.util.LogUtils;
 
 import java.util.List;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
+
 import rx.schedulers.Schedulers;
 
 /**
@@ -36,7 +36,7 @@ public class JKPresenter implements JKMusicData.Presenter {
     public void requestData() {
         ApiManager.getApiManager().getQQMusicApiService()
                 .getQQMusic(Constant.QQ_MUSIC_APP_ID,Constant.QQ_MUSIC_SIGN,Constant.MUSIC_KOREA)
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(io.reactivex.schedulers.Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(qqMusicBodyQQMusicResult -> parseData(Constant.MUSIC_KOREA,qqMusicBodyQQMusicResult.getShowapi_res_body().getPagebean().getSonglist()),this:: loadError);
     }
@@ -44,17 +44,14 @@ public class JKPresenter implements JKMusicData.Presenter {
     private  void loadError(Throwable throwable) {
         throwable.printStackTrace();
         LogUtils.w("JKPresenter","loadError RXjava异常！！");
-        mView.overswipe();
+        mView.hideProgress();
         Toast.makeText(MyApplication.mContext,"网络异常！",Toast.LENGTH_SHORT).show();
-
     }
 
     private void parseData(String topic,List<MusicBean> list){
-
         mView.setData(list);
-
+        mView.hideProgress();
         if (null != topic && null != list) {
-
             Observable.from(list).observeOn(Schedulers.io()).subscribe(bean -> {
                 bean.setType(Integer.parseInt(topic));
                 //MyApplication.getDaoSession().getMusicBeanDao().queryBuilder().where(MusicBeanDao.Properties.Type.eq(Constant.MUSIC_KOREA)).list().removeAll();

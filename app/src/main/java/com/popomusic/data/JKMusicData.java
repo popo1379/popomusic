@@ -12,8 +12,10 @@ import java.util.List;
 public interface JKMusicData {
     interface View extends BaseView {
     void setData(List<MusicBean> list);
-    void overswipe();
-}
+        void hideProgress();
+        void showProgress();
+
+    }
 
     interface Presenter extends BasePresenter {
 

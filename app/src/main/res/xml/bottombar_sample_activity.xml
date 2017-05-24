@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <tabs>
     <tab
-        icon="@mipmap/main_musics"
+        icon="@mipmap/main_music"
         id="@+id/tab1"
         title="音乐"
         barColorWhenSelected="#99FFFF"
         />
     <tab
-        icon="@mipmap/main_tv"
+        icon="@mipmap/main_video"
         id="@+id/tab2"
         title="视频"
         barColorWhenSelected="#FFCC00"/>
     <tab
-        icon="@mipmap/main_community"
+        icon="@mipmap/main_pic"
         id="@+id/tab3"
-        title="社区"
+        title="图库"
         barColorWhenSelected="#0099FF"/>
 
     <tab
-        icon="@mipmap/main_home"
-        id="@+id/tab3"
+        icon="@mipmap/main_popo"
+        id="@+id/tab4"
         title="Me"
         barColorWhenSelected="#FF3399"
    />

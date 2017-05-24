@@ -191,7 +191,7 @@ public class LocalMusicActivity extends BaseActivity implements LocalMusicData.V
                     MusicBean musicBean=(MusicBean) bundle.getSerializable(Constant.MEDIA_PLAYER_SERVICE_MODEL_PLAYING);
                     activity.title.setText(musicBean.getSongname());
                     activity.artist.setText(musicBean.getSingername());
-                    Glide.with(activity).load(musicBean.getAlbumpic_big()).asGif().diskCacheStrategy(DiskCacheStrategy.NONE).into(activity.playcard);
+                    Glide.with(activity).load(musicBean.getAlbumpic_big()).into(activity.playcard);
 
                     break;
                 case Constant.MEDIA_PLAYER_SERVICE_IS_PLAYING:

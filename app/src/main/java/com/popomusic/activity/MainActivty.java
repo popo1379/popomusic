@@ -24,7 +24,9 @@ import com.popo.popomusic.R;
 import com.popomusic.MyApplication;
 import com.popomusic.bean.Constant;
 import com.popomusic.fragment.CeshiFragment;
+import com.popomusic.fragment.HomeFragment;
 import com.popomusic.fragment.MusicFragment;
+import com.popomusic.fragment.VideoPagerFragment;
 import com.popomusic.musicService.MediaPlayerService;
 import com.popomusic.util.LogUtils;
 import com.roughike.bottombar.BottomBar;
@@ -70,8 +72,14 @@ public class MainActivty extends BaseActivity {
                         replaceFragment(new MusicFragment());
                         break;
                     case R.id.tab2:
-                        replaceFragment(new CeshiFragment());
+                        replaceFragment(new VideoPagerFragment());
                         break;
+                    case R.id.tab3:
+                        replaceFragment(new HomeFragment());
+                        break;
+                    case R.id.tab4:
+                        replaceFragment(new CeshiFragment());
+
                 }
             }
         });

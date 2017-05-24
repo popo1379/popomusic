@@ -18,7 +18,7 @@ android:background="@android:color/white">
 <com.roughike.bottombar.BottomBar
     android:id="@+id/bottomBar"
     android:layout_width="match_parent"
-    android:layout_height="45dp"
+    android:layout_height="60dp"
     android:layout_alignParentBottom="true"
     app:bb_tabXmlResource="@xml/bottombar_sample_activity"
     app:bb_behavior="shifting"/>
@@ -35,7 +35,6 @@ android:background="@android:color/white">
     android:layout_height="match_parent"
     android:layout_alignBottom="@+id/line"
     android:layout_below="@+id/toolbar">
-
 
 
 </FrameLayout>

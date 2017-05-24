@@ -97,7 +97,7 @@ public class MusicFragment extends BaseFragment {
         ViewPagerAdapter mAdapter = new ViewPagerAdapter(mViews, new OnPageClickListener(){
             @Override
             public void onPageClick(View view, int position) {
-                Log.d("cylog","position:"+position);
+                Toast("别敲了啥也没有");
             }
         });
 //设置适配器

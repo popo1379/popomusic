@@ -85,7 +85,8 @@ public class Constant {
 
     public static final String KEY = "aex02165daudxbmtrsul63c";
 
-
+    //开眼视频API
+    public static final String Video_BASE_URL = "http://baobab.kaiyanapp.com/api/";
 
 
 }

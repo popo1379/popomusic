@@ -3,6 +3,7 @@ package com.popomusic.presenter;
 import android.widget.Toast;
 
 import com.popomusic.MyApplication;
+import com.popomusic.activity.MainActivty;
 import com.popomusic.api.ApiManager;
 import com.popomusic.bean.Constant;
 import com.popomusic.bean.SearchBean;
@@ -11,7 +12,7 @@ import com.popomusic.util.LogUtils;
 
 import java.util.List;
 
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 /**
@@ -19,6 +20,7 @@ import rx.schedulers.Schedulers;
  */
 
 public class SearchPresenter implements SearchData.Presenter {
+
     private static final String TAG = SearchPresenter.class.getName();
     private SearchData.View mView;
     public SearchPresenter(SearchData.View view) {
@@ -34,14 +36,13 @@ public class SearchPresenter implements SearchData.Presenter {
         }
         try {
             ApiManager.getApiManager().getQQMusicApiService().searchQQMusic(Constant.QQ_MUSIC_APP_ID,Constant.QQ_MUSIC_SIGN,search,"1")
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribeOn(io.reactivex.schedulers.Schedulers.io())
+                    .observeOn(io.reactivex.android.schedulers.AndroidSchedulers.mainThread())
                     .subscribe(qqMusicBodyQQMusicResult ->{parseData(qqMusicBodyQQMusicResult.getShowapi_res_body().getPagebean().getContentlist());
                     },this::loadError );
         } catch (Exception e) {
             LogUtils.e(TAG,e.getMessage());
         }
-
     }
 
     private  void loadError(Throwable throwable) {

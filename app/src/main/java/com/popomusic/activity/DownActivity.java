@@ -22,7 +22,7 @@ import com.popomusic.util.LogUtils;
 import butterknife.BindView;
 
 /**
- * Created by Administrator on 2017/5/2 0002.
+ * Created by popo on 2017/5/2 0002.
  */
 public class DownActivity extends BaseActivity{
     private Messenger mServiceMessenger;
