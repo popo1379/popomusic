@@ -88,5 +88,7 @@ public class Constant {
     //开眼视频API
     public static final String Video_BASE_URL = "http://baobab.kaiyanapp.com/api/";
 
+    //易源数据
 
+    public static final String Show_BASE_URL = "http://route.showapi.com/";
 }

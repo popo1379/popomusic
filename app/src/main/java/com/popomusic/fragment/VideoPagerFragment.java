@@ -147,6 +147,7 @@ public class VideoPagerFragment extends BaseFragment implements VideoData.View,S
                 this.id=12;
                 break;
         }
+
     }
 
     public void onDestroy() {
