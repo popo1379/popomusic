@@ -1,5 +1,6 @@
 package com.popomusic.fragment;
 
+import android.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.popo.popomusic.R;
+import com.popomusic.activity.MainActivty;
 import com.popomusic.adapter.PicAdapter;
 import com.popomusic.data.PicData;
 import com.popomusic.data.VideoData;
@@ -36,7 +38,9 @@ public class HomeFragment extends BaseFragment implements PicData.View,SwipeRefr
     @BindView(R.id.pic_swipe)
     SwipeRefreshLayout srfLayout;
     PicAdapter madapter;
-
+    List<Contentlist> list=new ArrayList<Contentlist>();
+    FragmentManager fm;
+    PicXXfragment picXXfragment;
     @Override
     protected View initView() {
         view = View.inflate(UIcollector.getActivity(), R.layout.fragment_pic, null);
@@ -45,12 +49,11 @@ public class HomeFragment extends BaseFragment implements PicData.View,SwipeRefr
     @Override
     protected void initData() {
         recyclerView.setHasFixedSize(true); // 设置固定大小
-        // 错列网格布局
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,
                 StaggeredGridLayoutManager.VERTICAL));
         recyclerView.addItemDecoration(new MyItemDecoration(this.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator()); // 默认动画
-         List<Contentlist> list=new ArrayList<Contentlist>();
+
         madapter=new PicAdapter(list);
         recyclerView.setAdapter(madapter);
 
@@ -58,17 +61,29 @@ public class HomeFragment extends BaseFragment implements PicData.View,SwipeRefr
         picPresent.requestData();
         srfLayout.setOnRefreshListener(this);
         srfLayout.post(() -> onRefresh());
+
+        fm = getActivity().getFragmentManager();
+        picXXfragment=new PicXXfragment();
+        madapter.setOnItemClickListener((view1, position) -> {
+            if (list.get(position).getList().get(0).getBig()==null){
+                Toast("数据源故障");
+            }
+            else ((MainActivty)getActivity()).setPicUrl(list.get(position).getList().get(0).getBig());
+            ((MainActivty)getActivity()).replaceFragment( picXXfragment);
+        });
     }
+
     @Override
     public void onRefresh() {
         madapter.removeAll();
         picPresent.requestData();
-
+        madapter.notifyDataSetChanged();
     }
 
     @Override
     public void setData(List<Contentlist> list){
         madapter.addAll(list);
+        this.list=list;
     }
 
     //刷新开关：开

@@ -26,6 +26,8 @@ public class PicAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private List<Contentlist> list;
     private List<Integer> mHeights;
+    private OnItemClickListener onItemClickListener;
+
 
     public PicAdapter(List<Contentlist> list) {
 
@@ -67,17 +69,45 @@ class ViewHolder extends RecyclerView.ViewHolder{
         if (mHeights.size() <= position) {
             mHeights.add((int) (100 + Math.random() * 300));
         }
-
         ViewGroup.LayoutParams lp = ((ViewHolder) holder).imageView.getLayoutParams();
         lp.height = mHeights.get(position);
         ((ViewHolder) holder).imageView.setLayoutParams(lp);
         Glide.with(UIcollector.getContext())
                 .load(contentlist.getList().get(0).getMiddle())
+                .override(300, 400)
                 .into(((ViewHolder) holder).imageView);
-
+        ((ViewHolder) holder).imageView.setOnClickListener(view -> {
+            if (null != onItemClickListener) {
+                onItemClickListener.onItemClickListener(((ViewHolder) holder).imageView, position);
+            }
+        });
     }
+
     @Override
     public int getItemCount() {
         return list.size();
     }
+
+    public interface OnItemClickListener{
+        void onItemClickListener(View view,int position);
     }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.onItemClickListener = listener;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

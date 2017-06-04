@@ -43,7 +43,7 @@ public class MainActivty extends BaseActivity {
     private Messenger mServiceMessenger;
     @BindView(R.id.fab_music)
     FloatingActionButton mFabMusic;
-
+    String picUrl;
     @Override
     public int setLayoutResourceID() {
         return R.layout.activity_main;
@@ -58,7 +58,8 @@ public class MainActivty extends BaseActivity {
     public void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        toolbar.setTitle("泡泡影音");
+        toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
     }
 
     @Override
@@ -101,7 +102,7 @@ public class MainActivty extends BaseActivity {
     }
 
 
-    void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, fragment).commit();
     }
 
@@ -154,5 +155,16 @@ public class MainActivty extends BaseActivity {
         super.onDestroy();
 //        MyApplication.getRefWatcher().watch(this);
     }
+
+
+
+    public String getPicUrl(){
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl){
+        this.picUrl=picUrl;
+    }
+
 
 }

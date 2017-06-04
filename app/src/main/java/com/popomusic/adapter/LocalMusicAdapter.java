@@ -120,4 +120,10 @@ public class LocalMusicAdapter extends RecyclerView.Adapter<LocalMusicAdapter.Vi
     public interface OnItemClickListener{
         void onItemClickListener(View view,int position);
     }
+
+
+
+
+
+
 }

@@ -56,7 +56,6 @@ public class JKPresenter implements JKMusicData.Presenter {
                 bean.setType(Integer.parseInt(topic));
                 //MyApplication.getDaoSession().getMusicBeanDao().queryBuilder().where(MusicBeanDao.Properties.Type.eq(Constant.MUSIC_KOREA)).list().removeAll();
                 MyApplication.getDaoSession().getMusicBeanDao().insertOrReplace(bean);
-                LogUtils.d("JKPresenter","更新数据库");
             });
         }
     }

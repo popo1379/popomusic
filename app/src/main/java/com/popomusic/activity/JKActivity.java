@@ -36,6 +36,7 @@ import com.popomusic.presenter.JKPresenter;
 import com.popomusic.util.LogUtils;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -92,14 +93,14 @@ public class JKActivity extends BaseActivity implements JKMusicData.View,SwipeRe
     }
     @Override
     public void initData() {
+        srfLayout.setOnRefreshListener(this);
         mList = MyApplication.getDaoSession().getMusicBeanDao().queryBuilder().where(MusicBeanDao.Properties.Type.eq(Constant.MUSIC_KOREA)).list();
-        if (null != mList) {
+       if (null != mList) {
             mAdapter.setList(mList);
             mAdapter.notifyDataSetChanged();
             LogUtils.d("LocalMusicActivity","从数据库提取数据");
-            srfLayout.setOnRefreshListener(this);
-        }
-        srfLayout.post(() -> onRefresh());
+        }else
+         srfLayout.post(() -> onRefresh());
     }
 
     @Override
