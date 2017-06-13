@@ -29,6 +29,8 @@
         <activity android:name="com.popomusic.activity.PlayMusicActivity"></activity>
         <activity android:name="com.popomusic.activity.JKActivity"></activity>
         <activity android:name="com.popomusic.activity.SearchActivity"></activity>
+        <activity android:name="com.popomusic.activity.DownActivity"></activity>
+        <activity android:name="com.popomusic.activity.CollectActivity"></activity>
         <service android:name="com.popomusic.musicService.MediaPlayerService"/>
     </application>
 

@@ -3,6 +3,9 @@ package com.popomusic.videoModel;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+
 import java.util.List;
 
 /**
@@ -10,7 +13,6 @@ import java.util.List;
  */
 
 public class Data implements Parcelable {
-
     public String dataType;
     public int id;
     public String title;
@@ -31,7 +33,7 @@ public class Data implements Parcelable {
 
     protected Data(Parcel in) {
         dataType = in.readString();
-        id = in.readInt();
+       // id = in.readInt();
         title = in.readString();
         text = in.readString();
         description = in.readString();

@@ -41,9 +41,6 @@ public class CeshiFragment extends BaseFragment {
     @Override
     protected void initData() {
 
-
-
-
     }
 
 

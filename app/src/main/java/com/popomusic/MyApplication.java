@@ -17,6 +17,7 @@ import org.greenrobot.greendao.database.Database;
 public class MyApplication extends Application {
     public static DaoSession mDaoSession;
     public static DaoSession searchDaoSession;
+    public static DaoSession videoDaoSession;
     public static Context mContext;
 
     //    private static RefWatcher mRefWatcher;
@@ -36,6 +37,11 @@ public class MyApplication extends Application {
         DaoMaster.DevOpenHelper helper1=new DaoMaster.DevOpenHelper(this,"search_db",null);
         Database db1 = helper.getWritableDb();
         searchDaoSession=new DaoMaster(db1).newSession();
+
+        DaoMaster.DevOpenHelper Videohelper=new DaoMaster.DevOpenHelper(this,"video_db",null);
+        Database videodb = helper.getWritableDb();
+        videoDaoSession=new DaoMaster(videodb).newSession();
+
     }
 
     public static DaoSession getDaoSession(){
@@ -45,6 +51,8 @@ public class MyApplication extends Application {
     public static DaoSession getDaoSession1(){
         return searchDaoSession;
     }
+
+    public static DaoSession getVideoDaoSession(){return videoDaoSession;}
 
     //初始化FileDownloader
     private void initdown(){FileDownloader.init(mContext);}

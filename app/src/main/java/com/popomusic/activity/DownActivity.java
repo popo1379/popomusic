@@ -48,7 +48,6 @@ public class DownActivity extends BaseActivity{
 
     }
 
-
     @Override
     public void initData() {
 
@@ -82,7 +81,7 @@ public class DownActivity extends BaseActivity{
         public void handleMessage(Message msgFromService) {
             switch (msgFromService.what) {
                 case Constant.MEDIA_PLAYER_SERVICE_IS_PLAYING://正在播放
-                    LogUtils.d("MianActivity","服务管理者接收到了信息！正在播放");
+                    LogUtils.d("DownActivity","服务管理者接收到了信息！正在播放");
                     if (1 == msgFromService.arg1) {
                     } else if (0 == msgFromService.arg1) {
                     }

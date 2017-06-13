@@ -49,5 +49,4 @@ public class PicPresent implements PicData.Presenter {
         mView.setData(list);
         mView.hideProgress();
     }
-
 }

@@ -16,4 +16,5 @@
     <color name="colorLightBar">#FFFFFF</color>
     <color name="colorLightStatus">#9E9E9E</color>
     <color name="devide_line">#CBCED2</color>
+    <color name="redtext">#CC0033</color>
 </resources>

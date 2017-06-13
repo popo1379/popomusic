@@ -13,6 +13,8 @@ package com.popomusic.fragment;
 
         import com.popo.popomusic.R;
         import com.popomusic.activity.BaseActivity;
+        import com.popomusic.activity.CollectActivity;
+        import com.popomusic.activity.DownActivity;
         import com.popomusic.activity.JKActivity;
         import com.popomusic.activity.LocalMusicActivity;
         import com.popomusic.activity.SearchActivity;
@@ -58,11 +60,7 @@ public class MusicFragment extends BaseFragment {
     @BindView(R.id.QQtop)
     CardView qqtopCV;
 
-
     private ImageView iv1,iv2,iv3,iv4,iv5;
-
-
-
     @Override
     protected View initView() {
         if (view == null) {
@@ -111,7 +109,7 @@ public class MusicFragment extends BaseFragment {
             }
         });
     }
-    @OnClick({R.id.RL_korea,R.id.RL_JP,R.id.RL_yaogun,R.id.RL_English,R.id.RL_HK,R.id.RL_minyao,R.id.QQtop,R.id.classify})
+    @OnClick({R.id.RL_korea,R.id.RL_JP,R.id.RL_yaogun,R.id.RL_English,R.id.RL_HK,R.id.RL_minyao,R.id.QQtop,R.id.classify,R.id.RL_down,R.id.RL_love})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.RL_korea:
@@ -146,6 +144,13 @@ public class MusicFragment extends BaseFragment {
                 break;
             case  R.id.classify:
                 startActivity(new Intent(UIcollector.getActivity(),SearchActivity.class));
+
+            case R.id.RL_down:
+                startActivity(new Intent(UIcollector.getActivity(),DownActivity.class));
+
+            case R.id.RL_love:
+                startActivity(new Intent(UIcollector.getActivity(),CollectActivity.class));
+
 
         }
     }

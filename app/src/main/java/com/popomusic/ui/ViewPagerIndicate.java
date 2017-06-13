@@ -195,14 +195,15 @@ public class ViewPagerIndicate extends HorizontalScrollView implements View.OnCl
     @Override
     public void onClick(View v) {
         videoPagerFragment=new VideoPagerFragment();
-
         int pos = (Integer) v.getTag();
+        // 修改：
+        videoPagerFragment.indicateClickEvent(pos);
+
         //让当前标签总是显示在第二个位置
         smoothScrollTo((pos - 1) * mTabWidth, 0);
         drawUnderline(pos);
-       // mViewPager.setCurrentItem(pos, false);
-        // 修改：
-        videoPagerFragment.indicateClickEvent(pos);
+     //   mViewPager.setCurrentItem(pos, false);
+
         //高亮该项文字
         setTextHighlight(pos);
     }

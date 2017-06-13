@@ -59,8 +59,7 @@ public class PlayMusicActivity extends BaseActivity {
     public float mPositionOffset;//viewpager滑动的百分比
     public int mState;//viewpager的滑动状态
     public List<MusicBean> mList = new ArrayList<>();
-    public int enterX;//传递过来的x坐标，是点击View的中心点的x坐标，揭露动画
-    public int enterY;//传递过来的y坐标，是点击View的中心点的y坐标，揭露动画
+
     public String shareSongName;
     public String shareSingerName;
     public String shareUrl;
@@ -118,6 +117,8 @@ public class PlayMusicActivity extends BaseActivity {
 
         //滑动播放上/下一首歌曲的监听,实际上传递过去的是歌曲的position
         mAlbumViewPager.addOnPageChangeListener(myOnPageChangeListeger);
+
+        mBtnLike.setOnClickListener(view -> collect());
 
     }
 
@@ -404,27 +405,6 @@ public class PlayMusicActivity extends BaseActivity {
                 MyApplication.getDaoSession().getMusicBeanDao().update(beanToCollected);
             }
             Snackbar.make(mRootLayout,"取消收藏",Snackbar.LENGTH_SHORT).show();
-        }
-    }
-
-    /**
-     * 分享功能
-     */
-    private void share() {
-        if (null != mList) {
-            shareSongName = mList.get(mPositionPlaying).getSongname();
-            shareSingerName = mList.get(mPositionPlaying).getSingername();
-            shareUrl = mList.get(mPositionPlaying).getUrl();
-            shareContent = shareSongName  + "--" + shareSingerName + "\n" + shareUrl;
-        }
-        if ("".equals(shareContent)) {
-            Snackbar.make(mRootLayout, "分享失败", Snackbar.LENGTH_SHORT).show();
-        } else {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_SEND);
-            intent.putExtra(Intent.EXTRA_TEXT, shareContent);
-            intent.setType("text/plain");
-            startActivity(Intent.createChooser(intent, "分享到"));
         }
     }
 }

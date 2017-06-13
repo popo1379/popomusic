@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -11,23 +12,24 @@
         android:layout_width="match_parent"
         android:layout_height="28dp"
         android:orientation="horizontal">
-<TextView
-    android:id="@+id/video_name"
-    android:layout_width="300dp"
-    android:layout_height="wrap_content"
-    android:textSize="15dp"
-    />
+        <TextView
+            android:id="@+id/video_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            />
+<View
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"></View>
         <ImageView
+            android:id="@+id/video_delete"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:src="@mipmap/video_im"/>
-        <ImageView
-            android:id="@+id/video_collect"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@mipmap/video_love"/>
+            android:src="@mipmap/video_delete"
+            android:layout_marginRight="0dp"
+            />
     </LinearLayout>
 
 </LinearLayout>

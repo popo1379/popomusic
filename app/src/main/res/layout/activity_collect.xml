@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:orientation="horizontal"
+    android:background="@color/windowBackground">
+   <RelativeLayout
+       android:id="@+id/recycler_lovemusic"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/text_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="音乐收藏"
+            android:textSize="15dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/recycler_lovevideo"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/text_video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="视频收藏"
+            android:textSize="15dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+
+</LinearLayout>
+<FrameLayout
+    android:id="@+id/fl_collect"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    ></FrameLayout>
+</LinearLayout>

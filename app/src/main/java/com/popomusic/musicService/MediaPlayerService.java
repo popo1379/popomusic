@@ -84,7 +84,8 @@ public class MediaPlayerService extends Service implements OnPreparedListener, O
     private Messenger mMessengerMainActivity;
     //LockActivity的Messenger对象
     private Messenger mMessengerLockActivity;
-
+    //CollectActivity的Messenger对象
+    private Messenger mMessengerCollectActivity;
     //音频管理对象
     private AudioManager mAudioManager;
     //
@@ -264,6 +265,9 @@ public class MediaPlayerService extends Service implements OnPreparedListener, O
                 case Constant.MAIN_ACTIVITY:
                     service.mMessengerMainActivity = msgFromClient.replyTo;
                     break;
+                case Constant.COLLECTED_ACTIVITY:
+                    service.mMessengerCollectActivity = msgFromClient.replyTo;
+                    break;
                 case Constant.PLAYING_ACTIVITY_PLAYING_POSITION:
                     int newPosition = msgFromClient.arg1;
                     service.playSong(newPosition,-1);
@@ -319,20 +323,12 @@ public class MediaPlayerService extends Service implements OnPreparedListener, O
             }
         }
     }
-
-
     /**
      * 音乐播放
      *
      * @param musicUrl
      */
     private void play(String musicUrl) {
-        //给予无网络提示
-        //if (!NetworkUtil.isAvailable(MyApplication.mContext)){
-       //     if (bean.getType() != Integer.valueOf(Constant.MUSIC_LOCAL)){
-        //        Toast.makeText(MyApplication.mContext,"没有网络了哟，请检查网络设置",Toast.LENGTH_SHORT).show();
-       //     }
-       //}
 
         if (null != mMessengerLockActivity) {
             updateSongPosition(mMessengerLockActivity);
@@ -570,7 +566,7 @@ public class MediaPlayerService extends Service implements OnPreparedListener, O
             try {
                 if (null != mMessengerLocalMusicActivity) {
                     mMessengerLocalMusicActivity.send(msgToLocalAcitvity);
-                   Log.e(TAG, "发送更新进度的消息");
+                 //  Log.e(TAG, "发送更新进度的消息");
                 }
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -803,7 +799,7 @@ public class MediaPlayerService extends Service implements OnPreparedListener, O
 private void downMusicFile(String url){
 
     FileDownloader.getImpl().create(url)
-            .setPath(Environment.getExternalStorageDirectory().getAbsolutePath()+File.separator.endsWith(".mp4"),true)
+            .setPath(Environment.getExternalStorageDirectory().getAbsolutePath(),true)
             .setListener(new FileDownloadListener() {
                 @Override
                 protected void pending(BaseDownloadTask task, int soFarBytes, int totalBytes) {

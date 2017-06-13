@@ -2,6 +2,7 @@ package com.popomusic.fragment;
 
 import android.app.FragmentManager;
 import android.icu.text.DateFormat;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -147,6 +148,7 @@ public class VideoPagerFragment extends BaseFragment implements VideoData.View,S
                 this.id=12;
                 break;
         }
+        LogUtils.d("VideoFragment","+选择的id："+id);
 
     }
 
