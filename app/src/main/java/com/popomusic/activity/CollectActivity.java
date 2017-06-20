@@ -9,11 +9,7 @@ import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
@@ -21,19 +17,10 @@ import android.widget.TextView;
 
 import com.popo.popomusic.R;
 import com.popomusic.bean.Constant;
-import com.popomusic.fragment.BaseFragment;
-import com.popomusic.fragment.CeshiFragment;
 import com.popomusic.fragment.CollectMusicFragment;
 import com.popomusic.fragment.CollectVideoFragment;
-import com.popomusic.fragment.VideoPagerFragment;
 import com.popomusic.musicService.MediaPlayerService;
 import com.popomusic.util.LogUtils;
-
-import org.androidannotations.internal.core.handler.BeanHandler;
-import org.androidannotations.internal.core.model.AndroidRes;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;

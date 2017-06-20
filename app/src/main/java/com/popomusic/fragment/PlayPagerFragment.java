@@ -1,5 +1,4 @@
 package com.popomusic.fragment;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,9 +23,9 @@ public class PlayPagerFragment extends BaseFragment {
     private static final String BEAN = "bean";
     @BindView(R.id.img_album)
     ImageView mImgAlbum;
-  TextView mTvLyric;
- TextView mSongName;
-   TextView mSingerName;
+    TextView mTvLyric;
+    TextView mSongName;
+    TextView mSingerName;
     private MusicBean mBean;
 
     public static PlayPagerFragment newInstance(MusicBean bean){
@@ -53,39 +52,17 @@ public class PlayPagerFragment extends BaseFragment {
         return view;
     }
 
-        @Override
-        protected void initData() {
-            if (null != mBean) {
-                Glide.with(MyApplication.mContext).load(mBean.getAlbumpic_big()).asBitmap().centerCrop().diskCacheStrategy(DiskCacheStrategy.NONE).into(mImgAlbum);
-            }
+    @Override
+    protected void initData() {
+        if (null != mBean) {
+            Glide.with(MyApplication.mContext).load(mBean.getAlbumpic_big()).asBitmap().centerCrop().diskCacheStrategy(DiskCacheStrategy.NONE).into(mImgAlbum);
         }
-
-            public void onDestroy() {
-                super.onDestroy();
-            }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void onDestroy() {
+        super.onDestroy();
+    }
+}
 
 
 

@@ -15,7 +15,8 @@ import butterknife.BindView;
 /**
  * Created by Administrator on 2017/6/3 0003.
  */
-public class PicXXfragment extends BaseFragment {
+public class
+PicXXfragment extends BaseFragment {
 @BindView(R.id.picxx_img)
     ImageView imageView;
     String picurl;
@@ -34,7 +35,7 @@ public class PicXXfragment extends BaseFragment {
                 .load(picurl)
                 .into(imageView);
 
-homeFragment=new HomeFragment();
+        homeFragment=new HomeFragment();
         imageView.setOnClickListener(view1 -> {
             LogUtils.d("PicXXfragment","mageView.OnClickListener");
             ((MainActivty)getActivity()).replaceFragment(homeFragment);

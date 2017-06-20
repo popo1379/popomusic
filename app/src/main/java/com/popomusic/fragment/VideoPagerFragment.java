@@ -52,13 +52,12 @@ public class VideoPagerFragment extends BaseFragment implements VideoData.View,S
     protected void initData() {
         listView.setHasFixedSize(true);
         listView.setLayoutManager(new StaggeredGridLayoutManager(1, LinearLayoutManager.VERTICAL));
-
         List<ItemList> lists=new ArrayList<ItemList>();
-
+        initViewPagerIndicate();
         mPresent=new VideoPresenter((VideoData.View) this);
      videoadapter=new VideoAdapter(lists);
         listView.setAdapter(videoadapter);
-        initViewPagerIndicate();
+
         srfLayout.setOnRefreshListener(this);
         srfLayout.post(() -> onRefresh());
     }

@@ -12,20 +12,17 @@ import android.os.RemoteException;
 import android.support.annotation.IdRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.popo.popomusic.R;
-import com.popomusic.MyApplication;
 import com.popomusic.bean.Constant;
-import com.popomusic.fragment.CeshiFragment;
+import com.popomusic.fragment.MeFragment;
 import com.popomusic.fragment.HomeFragment;
 import com.popomusic.fragment.MusicFragment;
+import com.popomusic.fragment.VideoHomeFragment;
 import com.popomusic.fragment.VideoPagerFragment;
 import com.popomusic.musicService.MediaPlayerService;
 import com.popomusic.util.LogUtils;
@@ -73,13 +70,13 @@ public class MainActivty extends BaseActivity {
                         replaceFragment(new MusicFragment());
                         break;
                     case R.id.tab2:
-                        replaceFragment(new VideoPagerFragment());
+                        replaceFragment(new VideoHomeFragment());
                         break;
                     case R.id.tab3:
                         replaceFragment(new HomeFragment());
                         break;
                     case R.id.tab4:
-                        replaceFragment(new CeshiFragment());
+                        replaceFragment(new MeFragment());
 
                 }
             }
