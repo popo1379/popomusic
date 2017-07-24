@@ -3,6 +3,12 @@
   集合音乐视频美图于一身的Android app
 
   项目采用Rxjava+retrofit+MVP开发
+  
+![1](https://github.com/popo1379/popomusic/blob/master/pic/popo1.png)![2](https://github.com/popo1379/popomusic/blob/master/pic/popo2.png)![3](https://github.com/popo1379/popomusic/blob/master/pic/popo3.png)
+
+
+
+
 
 ## Credits
  - DingMouRen/DingDingMusic
